@@ -28,8 +28,7 @@ RUN set -eux; \
 	chown -R ts3server:ts3server /ts3server
 
 # setup directory where user data is stored
-VOLUME /ts3server/
-WORKDIR /ts3server/
+VOLUME /ts3server=
 
 #  9987 default voice
 # 10011 server query
