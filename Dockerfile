@@ -3,8 +3,8 @@ FROM alpine:3.8
 MAINTAINER fithwum
 
 RUN docker create
-    --net="host" \
-	--name=teamspeak3 \
+    -net="host" \
+	-name=teamspeak3 \
 	-v /mnt/user/appdata/teamspeak3:/ts3server \
 	-e PGID=100 \
 	-e PUID=99 \
