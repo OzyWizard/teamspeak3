@@ -44,5 +44,7 @@ WORKDIR /ts3server/
 # 30033 file transport
 EXPOSE 9987/udp 10011 30033
 
+COPY /files/ts3db_mariadb.ini /ts3server
+COPY /files/ts3db_mariadb.ini /ts3server
 ENTRYPOINT ["/ts3server"]
 CMD [ "ts3server" ]
