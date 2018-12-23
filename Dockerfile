@@ -2,6 +2,16 @@ FROM alpine:3.8
 
 MAINTAINER fithwum
 
+RUN apk add --no-cache ca-certificates libstdc++ su-exec
+RUN set -eux; \
+	addgroup -g 9987 ts3server; \
+	adduser -u 9987 -Hh /ts3server -G ts3server -s /sbin/nologin -D ts3server; \
+	mkdir -p /ts3server; \
+	chown ts3server:ts3server /ts3server; \
+	chmod 777 /ts3server 
+
+ENV PATH "${PATH}:/ts3server"
+
 ARG TEAMSPEAK_CHECKSUM=9f95621a70ebd4822e1c918ccea15bfc8e83da15358c820422dda5a142ae79e1
 ARG TEAMSPEAK_URL=http://dl.4players.de/ts/releases/3.5.1/teamspeak3-server_linux_alpine-3.5.1.tar.bz2
 
@@ -15,10 +25,7 @@ RUN set -eux; \
 	apk del .fetch-deps; \
 	mv /ts3server/*.so /ts3server/redist/* /usr/local/lib; \
 	ldconfig /usr/local/lib; \
-	chown -R ts3server:ts3server /ts3server \
-	chmod 777 /ts3server 
-
-ENV PATH "${PATH}:/ts3server"
+	chown -R ts3server:ts3server /ts3server
 
 # setup directory where user data is stored
 VOLUME /ts3server
@@ -31,5 +38,4 @@ EXPOSE 9987/udp 10011 30033
 COPY /files/ts3db_mariadb.ini /ts3server
 COPY /files/ts3server.ini /ts3server
 COPY /files/ts3server_startscript.sh /ts3server
-ENTRYPOINT ["/ts3server"]
 CMD [ "ts3server_startscript.sh" ]
