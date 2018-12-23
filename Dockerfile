@@ -7,7 +7,7 @@ RUN set -eux; \
 	adduser -u 9987 -Hh /ts3server -G ts3server -s /sbin/nologin -D ts3server; \
 	mkdir -p /ts3server; \
 	chown ts3server:ts3server /ts3server; \
-	chmod 777 /ts3server/* 
+	chmod 777 /ts3server
 
 ENV PATH "${PATH}:/ts3server"
 
@@ -24,17 +24,17 @@ RUN set -eux; \
 	apk del .fetch-deps; \
 	mv /ts3server/*.so /ts3server/redist/* /usr/local/lib; \
 	ldconfig /usr/local/lib; \
-	chown -R ts3server:ts3server /ts3server/*
+	chown -R ts3server:ts3server /ts3server
 
 # setup directory where user data is stored
-VOLUME /ts3server/
+VOLUME /ts3server
 
 #  9987 default voice
 # 10011 server query
 # 30033 file transport
 EXPOSE 9987/udp 10011 30033
 
-COPY /files/ts3db_mariadb.ini /ts3server/
-COPY /files/ts3server.ini /ts3server/
-COPY /files/ts3server_startscript.sh /ts3server/
+COPY /files/ts3db_mariadb.ini /ts3server
+COPY /files/ts3server.ini /ts3server
+COPY /files/ts3server_startscript.sh /ts3server
 CMD [ "/ts3server/ts3server_startscript.sh" ]
