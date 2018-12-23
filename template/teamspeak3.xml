@@ -40,6 +40,10 @@
       <Name>PGID</Name>
       <Value>100</Value>
     </Variable>
+	<Variable>
+      <Name>TS3SERVER_LICENSE</Name>
+      <Value></Value>
+    </Variable>
   </Environment>
   <Data>
     <Volume>
