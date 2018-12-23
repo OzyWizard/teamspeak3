@@ -1,0 +1,57 @@
+xml version=1.0 encoding=utf-8
+Containers
+  TemplateURLhttpsraw.githubusercontent.combinhexdocker-templatesmasterbinhexteamspeak.xmlTemplateURL
+  BetaFalseBeta
+  CategoryNetworkVoipCategory
+  Namebinhex-teamspeakName
+  Description
+    TeamSpeak is proprietary voice-over-Internet Protocol (VoIP) software that allows computer users to speak on a chat channel with fellow computer users, much like a telephone conference call. A TeamSpeak user will often wear a headset with an integrated microphone. Users use the TeamSpeak client software to connect to a TeamSpeak server of their choice, from there they can join chat channels and discuss things.[br][br]
+    [b][u][span style='color #E80000;']Configuration[span][u][b][br]
+    [b]config[b] This is where teamspeak will store it's configuration file, database and logs.[br][br]
+    [b][u][span style='color #E80000;']Notes[span][u][b][br]
+    Connect to the server using the TeamSpeak client with the host IP address and port 9987.[br]
+    To authenticate use the privilege key shown in the supervisord.log file in the host mapped config folder.
+  Description
+  Overview
+    TeamSpeak is proprietary voice-over-Internet Protocol (VoIP) software that allows computer users to speak on a chat channel with fellow computer users, much like a telephone conference call. A TeamSpeak user will often wear a headset with an integrated microphone. Users use the TeamSpeak client software to connect to a TeamSpeak server of their choice, from there they can join chat channels and discuss things.
+  Overview
+  Supporthttplime-technology.comforumindex.phptopic=45849.0Support
+  Registryhttpsregistry.hub.docker.comubinhexarch-teamspeakRegistry
+  GitHubhttpsgithub.combinhexarch-teamspeakGitHub
+  Repositorybinhexarch-teamspeakRepository
+  Projecthttpswww.teamspeak.comteamspeak3Project
+  BindTimetrueBindTime
+  PrivilegedfalsePrivileged
+  Networking
+    ModehostMode
+    Publish
+    Publish
+  Networking
+  Environment
+    Variable
+      NameUMASKName
+      Value000Value
+    Variable
+    Variable
+      NamePUIDName
+      Value99Value
+    Variable
+    Variable
+      NamePGIDName
+      Value100Value
+    Variable
+  Environment
+  Data
+    Volume
+      HostDirmntcacheappdataconfigHostDir
+      ContainerDirconfigContainerDir
+      ModerwMode
+    Volume
+  Data
+  WebUIWebUI
+  Iconhttpsraw.githubusercontent.combinhexdocker-templatesmasterbinheximagesteamspeak-icon.pngIcon
+  DonateTextIf you appreciate my work, then please consider buying me a beer DDonateText
+  DonateLinkhttpswww.paypal.comcgi-binwebscrcmd=_s-xclick&amp;hosted_button_id=MM5E27UX6AUU4DonateLink
+  DonateImghttpswww.paypal.comen_USibtnbtn_donate_SM.gifDonateImg
+  ExtraParamsExtraParams
+Containers
