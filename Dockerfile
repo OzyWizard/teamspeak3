@@ -19,7 +19,6 @@ RUN set -eux; \
 	apk add --no-cache --virtual .fetch-deps tar; \
 	wget "${TEAMSPEAK_URL}" -O server.tar.bz2; \
 	echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c -; \
-	mkdir -p /ts3server; \
 	tar -xf server.tar.bz2 --strip-components=1 -C /ts3server; \
 	rm server.tar.bz2; \
 	apk del .fetch-deps; \
