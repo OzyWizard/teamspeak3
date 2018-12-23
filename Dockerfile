@@ -2,6 +2,14 @@ FROM alpine:3.8
 
 MAINTAINER fithwum
 
+RUN docker create
+	--name=teamspeak3
+	-v /mnt/user/appdata/teamspeak3:/ts3server
+	-e PGID=100
+	-e PUID=99
+	-e TS3SERVER_LICENSE=
+	fithwum/teamspeak3
+
 RUN apk add --no-cache ca-certificates libstdc++ su-exec
 RUN set -eux; \
 	addgroup -g 9987 ts3server; \
