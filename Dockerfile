@@ -1,6 +1,14 @@
 FROM alpine:3.8
+
 MAINTAINER fithwum
 
+docker create \
+	--name=teamspeak3 \
+	-v /mnt/user/appdata/teamspeak3:/ts3server \
+	-e PGID=100 \
+	-e PUID=99  \
+	-e TS3SERVER_LICENSE= \
+	fithwum/teamspeak3
 
 RUN apk add --no-cache ca-certificates libstdc++ su-exec
 RUN set -eux; \
@@ -36,3 +44,5 @@ WORKDIR /ts3server/
 # 30033 file transport
 EXPOSE 9987/udp 10011 30033
 
+ENTRYPOINT ["/ts3server"]
+CMD [ "ts3server" ]
