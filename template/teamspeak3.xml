@@ -42,13 +42,13 @@
     </Variable>
 	<Variable>
       <Name>TS3SERVER_LICENSE</Name>
-      <Value></Value>
+      <Value>accept</Value>
     </Variable>
   </Environment>
   <Data>
     <Volume>
-      <HostDir>/mnt/user/appdata/teamspeak3</HostDir>
-      <ContainerDir>/ts3server</ContainerDir>
+      <HostDir>/mnt/user/appdata/teamspeak3/</HostDir>
+      <ContainerDir>/ts3server/</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
   </Data>
