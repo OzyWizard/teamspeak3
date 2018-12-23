@@ -36,4 +36,4 @@ EXPOSE 9987/udp 10011 30033
 COPY /files/ts3db_mariadb.ini /ts3server
 COPY /files/ts3server.ini /ts3server
 COPY /files/ts3server_startscript.sh /ts3server
-CMD [ "ts3server_startscript.sh" ]
+CMD [ "/ts3server/ts3server_startscript.sh" ]
