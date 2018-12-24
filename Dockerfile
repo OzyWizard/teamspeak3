@@ -16,8 +16,6 @@ RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2; \
 	tar -xf server.tar.bz2 --strip-components=1 -C /ts3server; \
 	rm server.tar.bz2
 
-RUN apk del .fetch-deps
-
 # setup directory where user data is stored
 VOLUME ["/ts3server"]
 WORKDIR /ts3server
