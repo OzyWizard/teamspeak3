@@ -3,7 +3,7 @@ MAINTAINER fithwum
 
 RUN apk add --no-cache ca-certificates libstdc++ su-exec
 
-RUN mkdir /ts3server; \
+RUN mkdir -p /ts3server; \
 	chmod 777 /ts3server
 
 ENV PATH "${PATH}:/ts3server"
@@ -30,7 +30,5 @@ WORKDIR /ts3server
 # 30033 file transport
 EXPOSE 9987/udp 10011 30033
 
-COPY /files/ts3db_mariadb.ini /ts3server/ts3db_mariadb.ini
-COPY /files/ts3server.ini /ts3server/ts3server.ini
-COPY /files/ts3server_startscript.sh /ts3server/ts3server_startscript.sh
+COPY ["/files/ts3db_mariadb.ini /ts3server/ts3db_mariadb.ini", "/files/ts3server.ini /ts3server/ts3server.ini", "/files/ts3server_startscript.sh /ts3server/ts3server_startscript.sh"]
 CMD [ "/ts3server/ts3server_startscript.sh" ]
