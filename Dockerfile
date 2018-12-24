@@ -2,6 +2,12 @@ FROM alpine:3.8
 MAINTAINER fithwum
 
 RUN apk add --no-cache ca-certificates libstdc++ su-exec
+RUN set -eux; \
+	addgroup -g 9987 ts3server; \
+	adduser -u 9987 -Hh /ts3server -G ts3server -s /sbin/nologin -D ts3server; \
+	mkdir -p /ts3server; \
+	chown ts3server:ts3server /ts3server; \
+	chmod 777 /ts3server
 
 ENV PATH "${PATH}:/ts3server"
 
@@ -12,11 +18,9 @@ RUN set -eux; \
 	apk add --no-cache --virtual .fetch-deps tar; \
 	wget "${TEAMSPEAK_URL}" -O server.tar.bz2; \
 	echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c -; \
-	mkdir -p /ts3server; \
 	tar -xf server.tar.bz2 --strip-components=1 -C /ts3server; \
 	rm server.tar.bz2; \
-	apk del .fetch-deps; \
-	chmod 777 /ts3server
+	apk del .fetch-deps
 
 # setup directory where user data is stored
 VOLUME /ts3server
