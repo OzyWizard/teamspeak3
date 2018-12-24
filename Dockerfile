@@ -2,12 +2,6 @@ FROM alpine:3.8
 MAINTAINER fithwum
 
 RUN apk add --no-cache ca-certificates libstdc++ su-exec
-RUN set -eux; \
-	addgroup -g 9987 ts3server; \
-	adduser -u 9987 -Hh /ts3server -G ts3server -s /sbin/nologin -D ts3server; \
-	mkdir -p /ts3server; \
-	chown ts3server:ts3server /ts3server; \
-	chmod 777 /ts3server
 
 ENV PATH "${PATH}:/ts3server"
 
@@ -22,7 +16,8 @@ RUN set -eux; \
 	tar -xf server.tar.bz2 --strip-components=1 -C /ts3server; \
 	rm server.tar.bz2; \
 	apk del .fetch-deps; \
-	chown -R ts3server:ts3server /ts3server
+	chown -R ts3server:ts3server /ts3server; \
+	chmod 777 /ts3server
 
 # setup directory where user data is stored
 VOLUME /ts3server
