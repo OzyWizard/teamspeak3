@@ -23,7 +23,7 @@ RUN set -eux; \
 	apk del .fetch-deps
 
 # setup directory where user data is stored
-VOLUME /ts3server
+VOLUME ["/ts3server"]
 WORKDIR /ts3server
 
 #  9987 default voice
