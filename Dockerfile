@@ -17,6 +17,10 @@ RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2; \
 RUN tar -xf server.tar.bz2 --strip-components=1 -C /ts3server; \
 	rm server.tar.bz2
 
+RUN wget https://github.com/fithwum/teamspeak3/blob/master/files/ts3db_mariadb.ini /ts3server/ts3db_mariadb.ini
+	wget https://github.com/fithwum/teamspeak3/blob/master/files/ts3server.ini /ts3server/ts3server.ini
+	wget https://github.com/fithwum/teamspeak3/blob/master/files/ts3server_startscript.sh /ts3server/ts3server_startscript.sh
+
 # setup directory where user data is stored
 VOLUME ["/ts3server"]
 WORKDIR /ts3server
@@ -26,7 +30,4 @@ WORKDIR /ts3server
 # 30033 file transport
 EXPOSE 9987/udp 10011 30033
 
-COPY /files/ts3db_mariadb.ini /ts3server/ts3db_mariadb.ini
-COPY /files/ts3server.ini /ts3server/ts3server.ini
-COPY /files/ts3server_startscript.sh /ts3server/ts3server_startscript.sh
 CMD ["/ts3server/ts3server_startscript.sh"]
