@@ -20,9 +20,7 @@ RUN set -eux; \
 	echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c -; \
 	tar -xf server.tar.bz2 --strip-components=1 -C /ts3server; \
 	rm server.tar.bz2; \
-	apk del .fetch-deps; \
-	chown ts3server:ts3server /ts3server; \
-	chmod 777 /ts3server
+	apk del .fetch-deps
 
 # setup directory where user data is stored
 VOLUME /ts3server
