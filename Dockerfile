@@ -5,6 +5,7 @@ RUN apk add --no-cache ca-certificates libstdc++ su-exec tar
 
 # Folder creation
 RUN mkdir -p /ts3server
+RUN chown -R root:root
 RUN chmod 777 /ts3server
 
 # URL's for files
