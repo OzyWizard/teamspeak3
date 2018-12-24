@@ -16,7 +16,6 @@ RUN set -eux; \
 	tar -xf server.tar.bz2 --strip-components=1 -C /ts3server; \
 	rm server.tar.bz2; \
 	apk del .fetch-deps; \
-	chown -R ts3server:ts3server /ts3server; \
 	chmod 777 /ts3server
 
 # setup directory where user data is stored
