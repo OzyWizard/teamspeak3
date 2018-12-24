@@ -20,7 +20,9 @@ RUN set -eux; \
 	echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c -; \
 	tar -xf server.tar.bz2 --strip-components=1 -C /ts3server; \
 	rm server.tar.bz2; \
-	apk del .fetch-deps
+	apk del .fetch-deps; \
+	chown ts3server:ts3server /ts3server; \
+	chmod 777 /ts3server
 
 # setup directory where user data is stored
 VOLUME /ts3server
@@ -31,7 +33,7 @@ WORKDIR /ts3server
 # 30033 file transport
 EXPOSE 9987/udp 10011 30033
 
-ADD /files/ts3db_mariadb.ini /ts3server
-ADD /files/ts3server.ini /ts3server
-ADD /files/ts3server_startscript.sh /ts3server
+COPY /files/ts3db_mariadb.ini /ts3server
+COPY /files/ts3server.ini /ts3server
+COPY /files/ts3server_startscript.sh /ts3server
 CMD [ "/ts3server/ts3server_startscript.sh" ]
