@@ -3,8 +3,8 @@ MAINTAINER fithwum
 
 RUN apk add --no-cache ca-certificates libstdc++ su-exec tar
 
-RUN mkdir -p /ts3server; \
-	chmod 777 /ts3server
+RUN mkdir -p /ts3server
+RUN chmod 777 /ts3server
 
 ENV PATH "${PATH}:/ts3server"
 
@@ -27,7 +27,6 @@ RUN wget "${DB_FILE}" -O /ts3server/ts3db_mariadb.ini; \
 
 # setup directory where user data is stored
 VOLUME /ts3server
-WORKDIR /ts3server
 
 #  9987 default voice
 # 10011 server query
