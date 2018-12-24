@@ -1,8 +1,6 @@
 FROM alpine:3.8
 MAINTAINER fithwum
 
-RUN useradd --uid 99 --gid 100 docker
-
 RUN apk add --no-cache ca-certificates libstdc++ su-exec
 RUN set -eux; \
 	addgroup -g 100 ts3server; \
