@@ -1,7 +1,7 @@
 FROM alpine:3.8
 MAINTAINER fithwum
 
-RUN apk add --no-cache ca-certificates libstdc++ su-exec
+RUN apk add --no-cache ca-certificates libstdc++ su-exec tar
 
 RUN mkdir -p /ts3server; \
 	chmod 777 /ts3server
@@ -12,7 +12,7 @@ ARG TEAMSPEAK_CHECKSUM=9f95621a70ebd4822e1c918ccea15bfc8e83da15358c820422dda5a14
 ARG TEAMSPEAK_URL=http://dl.4players.de/ts/releases/3.5.1/teamspeak3-server_linux_alpine-3.5.1.tar.bz2
 
 RUN set -eux; \
-	apk add --no-cache --virtual .fetch-deps tar
+	apk add --no-cache --virtual .fetch-deps
 
 RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2; \
 	echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c -; \
@@ -30,5 +30,7 @@ WORKDIR /ts3server
 # 30033 file transport
 EXPOSE 9987/udp 10011 30033
 
-COPY ["/files/ts3db_mariadb.ini /ts3server/ts3db_mariadb.ini", "/files/ts3server.ini /ts3server/ts3server.ini", "/files/ts3server_startscript.sh /ts3server/ts3server_startscript.sh"]
+COPY /files/ts3db_mariadb.ini /ts3server/ts3db_mariadb.ini
+COPY /files/ts3server.ini /ts3server/ts3server.ini
+COPY /files/ts3server_startscript.sh /ts3server/ts3server_startscript.sh
 CMD [ "/ts3server/ts3server_startscript.sh" ]
