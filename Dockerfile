@@ -3,8 +3,8 @@ MAINTAINER fithwum
 
 RUN apk add --no-cache ca-certificates libstdc++ su-exec
 RUN set -eux; \
-	addgroup -g 100 ts3server; \
-	adduser -u 99 -Hh /ts3server -G ts3server -s /sbin/nologin -D ts3server; \
+	addgroup -g 1006 ts3server; \
+	adduser -u 1006 -Hh /ts3server -G ts3server -s /sbin/nologin -D ts3server; \
 	mkdir -p /ts3server; \
 	chown ts3server:ts3server /ts3server; \
 	chmod 777 /ts3server
