@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Containers>
   <TemplateURL>https://github.com/fithwum/teamspeak3/template/teamspeak.xml</TemplateURL>
-  <Beta>False</Beta>
+  <Beta>true</Beta>
   <Category>Network:Voip</Category>
   <Name>teamspeak3</Name>
   <Description>
