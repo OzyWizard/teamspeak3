@@ -6,8 +6,6 @@ RUN apk add --no-cache ca-certificates libstdc++ su-exec tar
 RUN mkdir -p /ts3server
 RUN chmod 777 /ts3server
 
-ENV PATH "${PATH}:/ts3server"
-
 ARG TEAMSPEAK_CHECKSUM=9f95621a70ebd4822e1c918ccea15bfc8e83da15358c820422dda5a142ae79e1
 ARG TEAMSPEAK_URL=http://dl.4players.de/ts/releases/3.5.1/teamspeak3-server_linux_alpine-3.5.1.tar.bz2
 ARG DB_FILE=https://github.com/fithwum/teamspeak3/blob/master/files/ts3db_mariadb.ini
