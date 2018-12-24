@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM alpine:latest
 MAINTAINER fithwum
 
 RUN apk add --no-cache ca-certificates libstdc++ su-exec tar
