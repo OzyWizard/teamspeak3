@@ -6,11 +6,6 @@ RUN apk add --no-cache ca-certificates libstdc++ su-exec
 RUN mkdir /ts3server; \
 	chmod 777 /ts3server
 
-RUN set -eux; \
-	addgroup -g 9987 ts3server; \
-	adduser -u 9987 -Hh /ts3server -G ts3server -s /sbin/nologin -D ts3server; \
-	chown ts3server:ts3server /ts3server
-
 ENV PATH "${PATH}:/ts3server"
 
 ARG TEAMSPEAK_CHECKSUM=9f95621a70ebd4822e1c918ccea15bfc8e83da15358c820422dda5a142ae79e1
