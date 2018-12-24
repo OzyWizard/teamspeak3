@@ -22,7 +22,7 @@ RUN wget https://github.com/fithwum/teamspeak3/blob/master/files/ts3db_mariadb.i
 	wget https://github.com/fithwum/teamspeak3/blob/master/files/ts3server_startscript.sh /ts3server/ts3server_startscript.sh
 
 # setup directory where user data is stored
-VOLUME ["/ts3server"]
+VOLUME /ts3server
 WORKDIR /ts3server
 
 #  9987 default voice
