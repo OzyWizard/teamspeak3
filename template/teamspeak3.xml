@@ -15,11 +15,11 @@
   <Overview>
     TeamSpeak is proprietary voice-over-Internet Protocol (VoIP) software that allows computer users to speak on a chat channel with fellow computer users, much like a telephone conference call. A TeamSpeak user will often wear a headset with an integrated microphone. Users use the TeamSpeak client software to connect to a TeamSpeak server of their choice, from there they can join chat channels and discuss things.
   </Overview>
-  <Support>http://lime-technology.com/forum/index.php?topic=45849.0</Support>
+  <Support></Support>
   <Registry>https://registry.hub.docker.com/u/fithwum/teamspeak3/</Registry>
   <GitHub>https://github.com/fithwum/teamspeak3</GitHub>
   <Repository>fithwum/teamspeak3</Repository>
-  <Project>https://www.teamspeak.com/teamspeak3</Project>
+  <Project>https://www.teamspeak.com/</Project>
   <BindTime>true</BindTime>
   <Privileged>false</Privileged>
   <Networking>
