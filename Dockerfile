@@ -22,12 +22,11 @@ RUN set -eux; \
 	tar -xf server.tar.bz2 --strip-components=1 -C /ts3server; \
 	rm server.tar.bz2; \
 	apk del .fetch-deps; \
-	mv /ts3server/*.so /ts3server/redist/* /usr/local/lib; \
-	ldconfig /usr/local/lib; \
 	chown -R ts3server:ts3server /ts3server
 
 # setup directory where user data is stored
 VOLUME /ts3server
+WORKDIR /ts3server
 
 #  9987 default voice
 # 10011 server query
