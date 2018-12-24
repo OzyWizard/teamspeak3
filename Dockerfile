@@ -2,12 +2,14 @@ FROM alpine:3.8
 MAINTAINER fithwum
 
 RUN apk add --no-cache ca-certificates libstdc++ su-exec
-RUN mkdir /ts3server
+
+RUN mkdir /ts3server; \
+	chmod 777 /ts3server
+
 RUN set -eux; \
 	addgroup -g 9987 ts3server; \
 	adduser -u 9987 -Hh /ts3server -G ts3server -s /sbin/nologin -D ts3server; \
-	chown ts3server:ts3server /ts3server; \
-	chmod 777 /ts3server
+	chown ts3server:ts3server /ts3server
 
 ENV PATH "${PATH}:/ts3server"
 
