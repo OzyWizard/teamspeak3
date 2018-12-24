@@ -1,6 +1,8 @@
 FROM alpine:3.8
 MAINTAINER fithwum
 
+USER 99[:100]
+
 RUN apk add --no-cache ca-certificates libstdc++ su-exec
 RUN set -eux; \
 	addgroup -g 9987 ts3server; \
