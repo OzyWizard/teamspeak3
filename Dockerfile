@@ -17,8 +17,9 @@ ARG START_SCRIPT=https://github.com/fithwum/teamspeak3/blob/master/files/ts3serv
 RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2; \
 	echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c -
 
-RUN tar -xf server.tar.bz2 --strip-components=1 -C /ts3server; \
-	rm server.tar.bz2
+RUN tar -xf server.tar.bz2 --strip-components=1 -C /ts3server
+
+RUN rm server.tar.bz2
 
 RUN wget "${DB_FILE}" -O /ts3server/ts3db_mariadb.ini; \
 	wget "${INI_FILE}" -O /ts3server/ts3server.ini; \
