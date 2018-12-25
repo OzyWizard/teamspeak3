@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.7
 MAINTAINER fithwum
 
 RUN apk add --no-cache ca-certificates libstdc++ su-exec tar
@@ -26,7 +26,7 @@ RUN wget "${INI_FILE}" -O /ts3server/ts3server.ini
 RUN wget "${START_SCRIPT}" -O /ts3server/ts3server_startscript.sh
 
 # directory where data is stored
-VOLUME /ts3server
+VOLUME ["/ts3server"]
 
 #  9987 default voice, 10011 server query, 30033 file transport
 EXPOSE 9987/udp 10011 30033
