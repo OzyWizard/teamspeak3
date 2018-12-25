@@ -6,6 +6,7 @@ RUN apk add --no-cache ca-certificates libstdc++ su-exec tar
 # Folder creation
 RUN mkdir -p /ts3server
 RUN chmod 777 /ts3server
+RUN chown -R $(whoami) /ts3server
 
 # URL's for files
 ARG TEAMSPEAK_CHECKSUM=9f95621a70ebd4822e1c918ccea15bfc8e83da15358c820422dda5a142ae79e1
