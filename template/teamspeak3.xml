@@ -40,6 +40,21 @@
       <Name>TS3SERVER_LICENSE</Name>
       <Value>accept</Value>
     </Variable>
+    <Port>
+      <HostPort>9987</HostPort>
+      <ContainerPort>9987</ContainerPort>
+      <Protocol>tcp</Protocol>
+    </Port>
+    <Port>
+      <HostPort>10011</HostPort>
+      <ContainerPort>10011</ContainerPort>
+      <Protocol>tcp</Protocol>
+    </Port>
+    <Port>
+      <HostPort>30033</HostPort>
+      <ContainerPort>30033</ContainerPort>
+      <Protocol>tcp</Protocol>
+    </Port>
   </Environment>
   <Data>
     <Volume>
