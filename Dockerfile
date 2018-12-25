@@ -32,4 +32,5 @@ VOLUME /ts3server
 EXPOSE 9987/udp 10011 30033
 
 # Run command
+ENTRYPOINT ["/ts3server"]
 CMD ["/ts3server/ts3server_startscript.sh"]
