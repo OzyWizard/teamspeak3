@@ -12,7 +12,7 @@ ARG START_SCRIPT=https://github.com/fithwum/teamspeak3/blob/master/files/ts3serv
 RUN apk add --no-cache ca-certificates libstdc++ su-exec tar; \
 	mkdir -p /ts3server; \
 	chmod 777 -R /ts3server; \
-	chown -R nobody /ts3server
+	chown -R nobody:nobody /ts3server
 
 # File downloading/unpacking
 RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2; \
