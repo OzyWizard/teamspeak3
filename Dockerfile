@@ -8,7 +8,7 @@ ARG DB_FILE=https://github.com/fithwum/teamspeak3/blob/master/files/ts3db_mariad
 ARG INI_FILE=https://github.com/fithwum/teamspeak3/blob/master/files/ts3server.ini
 ARG START_SCRIPT=https://github.com/fithwum/teamspeak3/blob/master/files/ts3server_startscript.sh
 
-# installs and Folder creation
+# Installs dependencies and folder creation
 RUN apk add --no-cache ca-certificates libstdc++ su-exec tar; \
 	mkdir -p /ts3server; \
 	chmod 777 /ts3server; \
@@ -27,7 +27,7 @@ RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2; \
 VOLUME ["/ts3server"]
 
 #  9987 default voice, 10011 server query, 30033 file transport
-EXPOSE 9987/udp 10011 30033
+EXPOSE 9987/udp 10011/tcp 30033/tcp
 
 # Run command
 ENTRYPOINT ["/ts3server"]
