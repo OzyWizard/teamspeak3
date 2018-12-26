@@ -1,11 +1,10 @@
 FROM alpine:3.7
 MAINTAINER fithwum
 
-RUN apk add --no-cache ca-certificates libstdc++ su-exec tar
-
-# Folder creation
-RUN mkdir -p /ts3server
-RUN chmod 777 /ts3server
+# installs and Folder creation
+RUN apk add --no-cache ca-certificates libstdc++ su-exec tar; \
+	mkdir -p /ts3server; \
+	chmod 777 /ts3server
 
 # URL's for files
 ARG TEAMSPEAK_CHECKSUM=9f95621a70ebd4822e1c918ccea15bfc8e83da15358c820422dda5a142ae79e1
@@ -16,14 +15,12 @@ ARG START_SCRIPT=https://github.com/fithwum/teamspeak3/blob/master/files/ts3serv
 
 # File downloading/unpacking
 RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2
-RUN echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c -
-
-RUN tar -xf server.tar.bz2 --strip-components=1 -C /ts3server
-RUN rm server.tar.bz2
-
-RUN wget "${DB_FILE}" -O /ts3server/ts3db_mariadb.ini
-RUN wget "${INI_FILE}" -O /ts3server/ts3server.ini
-RUN wget "${START_SCRIPT}" -O /ts3server/ts3server_startscript.sh
+RUN echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c -; \
+	tar -xf server.tar.bz2 --strip-components=1 -C /ts3server; \
+	rm server.tar.bz2; \
+	wget "${DB_FILE}" -O /ts3server/ts3db_mariadb.ini; \
+	wget "${INI_FILE}" -O /ts3server/ts3server.ini; \
+	wget "${START_SCRIPT}" -O /ts3server/ts3server_startscript.sh
 
 # directory where data is stored
 VOLUME ["/ts3server"]
