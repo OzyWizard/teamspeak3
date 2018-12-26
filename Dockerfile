@@ -9,19 +9,19 @@ ARG INI_FILE=https://github.com/fithwum/teamspeak3/blob/master/files/ts3server.i
 ARG START_SCRIPT=https://github.com/fithwum/teamspeak3/blob/master/files/ts3server_startscript.sh
 
 # Installs dependencies and folder creation
-RUN apk add --no-cache ca-certificates libstdc++ su-exec tar; \
-	mkdir -p /ts3server; \
-	chmod 777 -R /ts3server; \
-	chown -R nobody:users /ts3server
+RUN apk add --no-cache ca-certificates libstdc++ su-exec tar \
+	&& mkdir -p /ts3server \
+	&& chmod 777 -R /ts3server \
+	&& chown -R nobody:users /ts3server
 
 # File downloading/unpacking
-RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2; \
-	echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c -; \
-	tar -xf server.tar.bz2 --strip-components=1 -C /ts3server; \
-	rm server.tar.bz2; \
-	wget "${DB_FILE}" -O /ts3server/ts3db_mariadb.ini; \
-	wget "${INI_FILE}" -O /ts3server/ts3server.ini; \
-	wget "${START_SCRIPT}" -O /ts3server/ts3server_startscript.sh
+RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2 \
+	&& echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c - \
+	&& tar -xf server.tar.bz2 --strip-components=1 -C /ts3server; \
+	rm server.tar.bz2 \
+	&& wget "${DB_FILE}" -O /ts3server/ts3db_mariadb.ini \
+	&& wget "${INI_FILE}" -O /ts3server/ts3server.ini \
+	&& wget "${START_SCRIPT}" -O /ts3server/ts3server_startscript.sh
 
 # directory where data is stored
 VOLUME ["/ts3server"]
