@@ -11,7 +11,8 @@ ARG START_SCRIPT=https://github.com/fithwum/teamspeak3/blob/master/files/ts3serv
 # installs and Folder creation
 RUN apk add --no-cache ca-certificates libstdc++ su-exec tar; \
 	mkdir -p /ts3server; \
-	chmod 777 /ts3server
+	chmod 777 /ts3server; \
+	chown -R nobody /ts3server
 
 # File downloading/unpacking
 RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2; \
@@ -20,8 +21,7 @@ RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2; \
 	rm server.tar.bz2; \
 	wget "${DB_FILE}" -O /ts3server/ts3db_mariadb.ini; \
 	wget "${INI_FILE}" -O /ts3server/ts3server.ini; \
-	wget "${START_SCRIPT}" -O /ts3server/ts3server_startscript.sh; \
-	chown -R nobody /ts3server
+	wget "${START_SCRIPT}" -O /ts3server/ts3server_startscript.sh
 
 # directory where data is stored
 VOLUME ["/ts3server"]
