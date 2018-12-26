@@ -9,7 +9,7 @@ ARG INI_FILE=https://github.com/fithwum/teamspeak3/blob/master/files/ts3server.i
 ARG START_SCRIPT=https://github.com/fithwum/teamspeak3/blob/master/files/ts3server_startscript.sh
 
 # Installs dependencies and folder creation
-RUN apk add --no-cache ca-certificates libstdc++ su-exec .fetch-deps tar; \
+RUN apk add --no-cache ca-certificates libstdc++ su-exec tar; \
 	mkdir -p /ts3server; \
 	chmod 777 -R /ts3server; \
 	chown -R nobody:users /ts3server
