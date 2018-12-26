@@ -16,7 +16,7 @@ RUN apk add --no-cache ca-certificates libstdc++ su-exec tar; \
 
 # File downloading/unpacking
 RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2; \
-	echo "${TEAMSPEAK_CHECKSUM} server.tar.bz2" | sha256sum -c -; \
+	echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c -; \
 	tar -xf server.tar.bz2 --strip-components=1 -C /ts3server; \
 	rm server.tar.bz2; \
 	wget "${DB_FILE}" -O /ts3server/ts3db_mariadb.ini; \
@@ -26,7 +26,7 @@ RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2; \
 # directory where data is stored
 VOLUME ["/ts3server"]
 
-#  9987 default voice, 10011 server query, 30033 file transport
+# 9987 default voice, 10011 server query, 30033 file transport
 EXPOSE 9987/udp 10011/tcp 30033/tcp
 
 # Run command
