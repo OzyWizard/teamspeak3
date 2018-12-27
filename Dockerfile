@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM base/archlinux
 MAINTAINER fithwum
 
 # URL's for files
