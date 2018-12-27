@@ -20,16 +20,18 @@ ENV PATH ${PATH}:/ts3server
 RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2 \
 	&& echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c - \
 	&& tar -xf server.tar.bz2 --strip-components=1 -C /ts3server \
-	&& rm  -v server.tar.bz2 \
-	&& wget "${DB_FILE}" -O /ts3server/ts3db_mariadb.ini \
-	&& wget "${INI_FILE}" -O /ts3server/ts3server.ini \
-	&& wget "${START_SCRIPT}" -O /ts3server/ts3server_startscript.sh \
-	&& chmod 777 -R /ts3server \
+	&& rm  -v server.tar.bz2
+
+ADD ["${DB_FILE}",/ts3server]
+ADD ["${INI_FILE}",/ts3server]
+ADD ["${START_SCRIPT}",/ts3server]
+
+RUN chmod 777 -R /ts3server \
 	&& chown 99:100 -R /ts3server \
 	&& chmod +x -v /ts3server/ts3server_startscript.sh
 
 # directory where data is stored
-VOLUME ${PATH}:/ts3server
+VOLUME /ts3server
 
 # 9987 default voice, 10011 server query, 30033 file transport
 EXPOSE 9987/udp 10011/tcp 30033/tcp
