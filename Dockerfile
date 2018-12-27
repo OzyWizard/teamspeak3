@@ -17,7 +17,7 @@ RUN apk add --no-cache ca-certificates libstdc++ su-exec tar \
 ENV PATH "${PATH}:/ts3server"
 
 # File downloading/unpacking
-RUN cd ./ts3server
+RUN cd ./ts3server \
 	&& wget "${TEAMSPEAK_URL}" -O server.tar.bz2 \
 	&& echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c - \
 	&& tar -xf server.tar.bz2 --strip-components=1 -C /ts3server \
