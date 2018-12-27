@@ -25,7 +25,7 @@ RUN cd ./ts3server \
 	&& wget "${DB_FILE}" -O /ts3server/ts3db_mariadb.ini \
 	&& wget "${INI_FILE}" -O /ts3server/ts3server.ini \
 	&& wget "${START_SCRIPT}" -O /ts3server/ts3server_startscript.sh \
-	&& cd ..
+	&& cd .. \
 	&& chmod 777 -R /ts3server \
 	&& chown 99:100 -R /ts3server \
 	&& chmod +x /ts3server/ts3server_startscript.sh
