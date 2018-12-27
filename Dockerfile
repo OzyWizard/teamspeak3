@@ -22,9 +22,7 @@ RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2 \
 	&& tar -xf server.tar.bz2 --strip-components=1 -C /ts3server \
 	&& rm  -v server.tar.bz2
 
-ADD [--chown=99:100] ["${DB_FILE}",/ts3server]
-ADD [--chown=99:100] ["${INI_FILE}",/ts3server]
-ADD [--chown=99:100] ["${START_SCRIPT}",/ts3server]
+ADD [--chown=99:100] [/files/*,/ts3server]
 
 RUN chmod 777 -R /ts3server \
 	&& chown 99:100 -R /ts3server \
