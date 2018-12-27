@@ -14,7 +14,7 @@ RUN apk add --no-cache ca-certificates libstdc++ su-exec tar \
 	&& chmod 777 -R -v /ts3server \
 	&& chown 99:100 -R -v /ts3server
 
-ENV PATH="/ts3server"
+ENV PATH="${PATH}:/ts3server"
 
 # File downloading/unpacking
 RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2 \
