@@ -1,6 +1,8 @@
 FROM alpine:3.7
 MAINTAINER fithwum
 
+WORKDIR ["/"]
+
 # URL's for files
 ARG TEAMSPEAK_CHECKSUM=9f95621a70ebd4822e1c918ccea15bfc8e83da15358c820422dda5a142ae79e1
 ARG TEAMSPEAK_URL=http://dl.4players.de/ts/releases/3.5.1/teamspeak3-server_linux_alpine-3.5.1.tar.bz2
@@ -16,7 +18,6 @@ RUN apk add --no-cache ca-certificates libstdc++ su-exec tar \
 
 # directory where data is stored
 VOLUME ["/ts3server"]
-WORKDIR ["/"]
 
 # File downloading/unpacking
 RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2 \
