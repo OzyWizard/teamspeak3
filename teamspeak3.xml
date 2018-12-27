@@ -34,6 +34,11 @@
     </Variable>
   </Environment>
   <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/teamspeak3/</HostDir>
+      <ContainerDir>/ts3server</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
   </Data>
   <WebUI></WebUI>
   <Icon>https://raw.githubusercontent.com/fithwum/teamspeak3/master/Ts3Icon.png</Icon>
@@ -47,5 +52,4 @@
   <Config Name="Host Port 3" Target="30033" Default="30033" Mode="tcp" Description="Container Port: 30033" Type="Port" Display="always" Required="true" Mask="false">30033</Config>
   <Config Name="Key 2" Target="PUID" Default="99" Mode="" Description="Container Variable: PUID" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
   <Config Name="Key 3" Target="PGID" Default="100" Mode="" Description="Container Variable: PGID" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
-  <Config Name="AppData Config Path" Target="/ts3server" Default="/mnt/user/appdata/teamspeak3" Mode="rw" Description="Container Path: /ts3server" Type="Path" Display="advanced-hide" Required="true" Mask="false">/mnt/user/appdata/teamspeak3</Config>
 </Containers>
