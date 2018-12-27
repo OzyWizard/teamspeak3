@@ -14,7 +14,7 @@ RUN apk add --no-cache ca-certificates libstdc++ su-exec tar \
 	&& chmod 777 -R -v /ts3server \
 	&& chown 99:100 -R -v /ts3server
 
-ENV PATH "${PATH}:/ts3server"
+ENV PATH ${PATH}:/ts3server
 
 # File downloading/unpacking
 RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2 \
@@ -29,7 +29,7 @@ RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2 \
 	&& chmod +x -v /ts3server/ts3server_startscript.sh
 
 # directory where data is stored
-VOLUME ["/ts3server"]
+VOLUME /ts3server
 
 # 9987 default voice, 10011 server query, 30033 file transport
 EXPOSE 9987/udp 10011/tcp 30033/tcp
