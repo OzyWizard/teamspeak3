@@ -10,7 +10,6 @@ ARG START_SCRIPT=https://github.com/fithwum/teamspeak3/blob/master/files/ts3serv
 
 # Installs dependencies and folder creation
 RUN apk add --no-cache ca-certificates libstdc++ su-exec tar \
-	&& addgroup -g 100 users \
 	&& adduser -u 99 -Hh /ts3server -G users -s /sbin/nologin -D nobody \
 	&& mkdir -p /ts3server \
 	&& chmod 777 -R /ts3server \
