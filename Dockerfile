@@ -28,7 +28,6 @@ RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2 \
 
 # directory where data is stored
 VOLUME ["/ts3server"]
-WORKDIR ["/ts3server"]
 
 # 9987 default voice, 10011 server query, 30033 file transport
 EXPOSE 9987/udp 10011/tcp 30033/tcp
