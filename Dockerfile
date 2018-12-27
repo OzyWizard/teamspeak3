@@ -34,5 +34,4 @@ WORKDIR ["/ts3server"]
 EXPOSE 9987/udp 10011/tcp 30033/tcp
 
 # Run command
-ENTRYPOINT ["/ts3server"]
 CMD ["/ts3server/ts3server_startscript.sh"]
