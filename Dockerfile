@@ -23,7 +23,8 @@ RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2 \
 	&& wget "${INI_FILE}" -O /ts3server/ts3server.ini \
 	&& wget "${START_SCRIPT}" -O /ts3server/ts3server_startscript.sh \
 	&& chmod 777 -R /ts3server \
-	&& chown 99:100 -R /ts3server
+	&& chown 99:100 -R /ts3server \
+	&& chmod +x /ts3server/ts3server_startscript.sh
 
 # directory where data is stored
 VOLUME ["/ts3server"]
