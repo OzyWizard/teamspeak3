@@ -14,7 +14,7 @@ RUN apk add --no-cache ca-certificates libstdc++ su-exec tar \
 	&& adduser -u 99 -G 100 -s /sbin/nologin -D ts3server \
 	&& mkdir -p /ts3server \
 	&& chmod 777 -R /ts3server \
-	&& chown -R 99:100 /ts3server
+	&& chown 99:100 -R /ts3server
 
 # File downloading/unpacking
 RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2 \
