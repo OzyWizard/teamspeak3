@@ -16,6 +16,7 @@ RUN apk add --no-cache ca-certificates libstdc++ su-exec tar \
 
 # directory where data is stored
 VOLUME ["/ts3server"]
+WORKDIR ["/"]
 
 # File downloading/unpacking
 RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2 \
