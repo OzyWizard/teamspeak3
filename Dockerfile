@@ -1,8 +1,6 @@
 FROM alpine:3.7
 MAINTAINER fithwum
 
-WORKDIR ["/"]
-
 # URL's for files
 ARG TEAMSPEAK_CHECKSUM=9f95621a70ebd4822e1c918ccea15bfc8e83da15358c820422dda5a142ae79e1
 ARG TEAMSPEAK_URL=http://dl.4players.de/ts/releases/3.5.1/teamspeak3-server_linux_alpine-3.5.1.tar.bz2
@@ -16,8 +14,7 @@ RUN apk add --no-cache ca-certificates libstdc++ su-exec tar \
 	&& chmod 777 -R -v /ts3server \
 	&& chown 99:100 -R -v /ts3server
 
-# directory where data is stored
-VOLUME ["/ts3server"]
+ENV PATH "${PATH}:/ts3server"
 
 # File downloading/unpacking
 RUN cd ./ts3server
@@ -32,6 +29,9 @@ RUN cd ./ts3server
 	&& chmod 777 -R /ts3server \
 	&& chown 99:100 -R /ts3server \
 	&& chmod +x /ts3server/ts3server_startscript.sh
+
+# directory where data is stored
+VOLUME ["/ts3server"]
 
 # 9987 default voice, 10011 server query, 30033 file transport
 EXPOSE 9987/udp 10011/tcp 30033/tcp
