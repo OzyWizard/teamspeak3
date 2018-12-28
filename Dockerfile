@@ -27,7 +27,7 @@ RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2 \
 	&& wget "${DB_FILE}" -O /ts3temp/ts3db_mariadb.ini \
 	&& wget "${INI_FILE}" -O /ts3temp/ts3server.ini \
 	&& wget "${START_SCRIPT}" -O /ts3temp/ts3server_startscript.sh \
-	&& mv /ts3temp/* /ts3server/
+	&& mv /ts3temp/* /ts3server/ \
 	&& chmod 777 -R /ts3server \
 	&& chown 99:100 -R /ts3server \
 	&& chmod +x -v /ts3server/ts3server_startscript.sh
