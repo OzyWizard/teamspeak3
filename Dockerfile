@@ -40,4 +40,4 @@ WORKDIR /ts3server
 EXPOSE 9987/udp 10011/tcp 30033/tcp
 
 # Run command
-CMD ["/bin/sh", "/ts3server/runserver.sh"]
+CMD ["/bin/sh", "/ts3server/ts3server_startscript.sh"]
