@@ -35,7 +35,7 @@
   </Environment>
   <Data>
     <Volume>
-      <HostDir>/mnt/user/appdata/teamspeak3/</HostDir>
+      <HostDir>/mnt/user/appdata/ts3server/</HostDir>
       <ContainerDir>/ts3server/</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
