@@ -1,4 +1,6 @@
 #!/bin/bash
+# Copyright (c) 2018 Fithwum
+# All rights reserved
 
 if [ ! -d /ts3server/ ]; then
 	echo '******MOVING**********'
