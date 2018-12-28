@@ -23,7 +23,7 @@
   <BindTime>true</BindTime>
   <Privileged>false</Privileged>
   <Networking>
-	<Mode>host</Mode>
+	<Mode>bridge</Mode>
     <Publish>
     </Publish>
   </Networking>
@@ -36,7 +36,7 @@
   <Data>
     <Volume>
       <HostDir>/mnt/user/appdata/teamspeak3/</HostDir>
-      <ContainerDir>/ts3server</ContainerDir>
+      <ContainerDir>/ts3server/</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
   </Data>
