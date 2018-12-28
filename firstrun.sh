@@ -8,3 +8,9 @@ if [ ! -d /ts3server/ ]; then
 	chown nobody:users -R /ts3server
 	chmod 777 -R /ts3server
 fi
+
+
+PUT IN DOCKERFILE
+
+ADD firstrun.sh /etc/my_init.d/firstrun.sh
+RUN chmod +x /etc/my_init.d/firstrun.sh﻿
