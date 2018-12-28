@@ -6,6 +6,7 @@ ARG TEAMSPEAK_CHECKSUM=9f95621a70ebd4822e1c918ccea15bfc8e83da15358c820422dda5a14
 ARG TEAMSPEAK_URL=http://dl.4players.de/ts/releases/3.5.1/teamspeak3-server_linux_alpine-3.5.1.tar.bz2
 ARG DB_FILE=https://raw.githubusercontent.com/fithwum/teamspeak3/master/files/ts3db_mariadb.ini
 ARG INI_FILE=https://raw.githubusercontent.com/fithwum/teamspeak3/master/files/ts3server.ini
+ARG RUN_SCRIPT=https://raw.githubusercontent.com/fithwum/teamspeak3/master/files/runserver.sh
 ARG START_SCRIPT=https://raw.githubusercontent.com/fithwum/teamspeak3/master/files/ts3server_startscript.sh
 
 # Installs dependencies and folder creation
@@ -26,11 +27,13 @@ RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2 \
 	&& rm  -v server.tar.bz2 \
 	&& wget "${DB_FILE}" -O /ts3temp/ts3db_mariadb.ini \
 	&& wget "${INI_FILE}" -O /ts3temp/ts3server.ini \
+	&& wget "${RUN_SCRIPT}" -O /ts3temp/runserver.sh \
 	&& wget "${START_SCRIPT}" -O /ts3temp/ts3server_startscript.sh \
 	&& mv /ts3temp/* /ts3server/ \
 	&& chmod 777 -R /ts3server \
 	&& chown 99:100 -R /ts3server \
-	&& chmod +x -v /ts3server/ts3server_startscript.sh
+	&& chmod +x -v /ts3server/ts3server_startscript.sh \
+	&& chmod +x -v /ts3server/runserver.sh
 
 # directory where data is stored
 VOLUME /ts3server
