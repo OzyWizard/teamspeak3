@@ -12,18 +12,22 @@ ARG START_SCRIPT=https://raw.githubusercontent.com/fithwum/teamspeak3/master/fil
 RUN apk add --no-cache ca-certificates libstdc++ su-exec tar \
 	&& mkdir -p -v /ts3server \
 	&& chmod 777 -R -v /ts3server \
-	&& chown 99:100 -R -v /ts3server
+	&& chown 99:100 -R -v /ts3server \
+	&& mkdir -p -v /ts3temp \
+	&& chmod 777 -R -v /ts3temp \
+	&& chown 99:100 -R -v /ts3temp
 
 ENV PATH ${PATH}:/ts3server
 
 # File downloading/unpacking
 RUN wget "${TEAMSPEAK_URL}" -O server.tar.bz2 \
 	&& echo "${TEAMSPEAK_CHECKSUM} *server.tar.bz2" | sha256sum -c - \
-	&& tar -xf server.tar.bz2 --strip-components=1 -C /ts3server \
+	&& tar -xf server.tar.bz2 --strip-components=1 -C /ts3temp \
 	&& rm  -v server.tar.bz2 \
-	&& wget "${DB_FILE}" -O /ts3server/ts3db_mariadb.ini \
-	&& wget "${INI_FILE}" -O /ts3server/ts3server.ini \
-	&& wget "${START_SCRIPT}" -O /ts3server/ts3server_startscript.sh \
+	&& wget "${DB_FILE}" -O /ts3temp/ts3db_mariadb.ini \
+	&& wget "${INI_FILE}" -O /ts3temp/ts3server.ini \
+	&& wget "${START_SCRIPT}" -O /ts3temp/ts3server_startscript.sh \
+	&& mv /ts3temp/* /ts3server/
 	&& chmod 777 -R /ts3server \
 	&& chown 99:100 -R /ts3server \
 	&& chmod +x -v /ts3server/ts3server_startscript.sh
